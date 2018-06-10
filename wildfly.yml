@@ -20,7 +20,7 @@
    - name: obtention de l'archive wildfly
      unarchive:
        src: http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.tar.gz
-       dest: /opt/wildfly/
+       dest: /opt/wildfly
        owner: wildfly
        remote_src: yes
        creates: /home/wildfly/wildfly-11.0.0.Final       
