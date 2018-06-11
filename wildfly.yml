@@ -24,7 +24,6 @@
    - name: renommage wildfly
      command: mv /opt/wildfly-11.0.0.Final /opt/wildfly
      
-   
    - name: configuration wildfly
      copy:
        src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.conf
