@@ -23,26 +23,28 @@
        dest: /opt/wildfly
        owner: wildfly
        remote_src: yes
-       creates: /home/wildfly/wildfly-11.0.0.Final       
+     
+   - name: refaire l'arborescence
+     command: mv /opt/wildfly/wildfly-11.0.0.Final /opt/wildfly
    
    - name: configuration wildfly
      copy:
-       src: /opt/wildfly/wildfly-11.0.0.Final/docs/contrib/scripts/systemd/wildfly.conf
+       src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.conf
        dest: /etc/wildfly
        owner: wildfly
        remote_src: yes
 
    - name: copie du service
      copy:
-       src: /opt/wildfly/wildfly-11.0.0.Final/docs/contrib/scripts/systemd/wildfly.service
+       src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service
        dest: /etc/systemd/system
        owner: wildfly
        remote_src: yes
 
    - name: copie du lanceur
      copy:
-       src: /opt/wildfly/wildfly-11.0.0.Final/docs/contrib/scripts/systemd/launch.sh
-       dest: /opt/wildfly/wildfly-11.0.0.Final/bin
+       src: /opt/wildfly/docs/contrib/scripts/systemd/launch.sh
+       dest: /opt/wildfly/bin
        owner: wildfly
        mode: 0644
        remote_src: yes
