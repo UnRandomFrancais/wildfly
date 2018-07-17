@@ -1,0 +1,32 @@
+---
+- hosts: wildfly-server
+  roles:
+    - wildfly-server
+    
+  tasks:
+
+   - name: installation jdk8
+     package: name=openjdk-8-jdk-headless state=present
+     
+   - name: installation maven
+     package: name=maven state=present
+     
+   - name: installation git
+     package: name=git state=present
+     
+   - name: créer un user deploy
+     user:
+       name: deploy
+       system: yes
+       create_home: /home/deploy
+       
+   - git:
+       repo: 'https://github.com/spoonless/mvc.git'
+       dest: /home/deploy/mvc
+       clone: yes
+   
+   - name: cd /home/deploy/mvc
+     command: cd /home/deploy/mvc
+   
+   - name: mvn wildfly:deploy
+     command: mvn wildfly:deploy
